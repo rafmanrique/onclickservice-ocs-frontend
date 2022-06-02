@@ -202,10 +202,6 @@ export const Perfil = () => {
                   onClick={() => { actions.handleEditPedido(modalData, 2) }}>
                   Servicio Finalizado
                 </button>
-                <button type="button" className="mx-2 orden-servicios"
-                  onClick={() => { actions.handleEvaluacion(modalData) }}>
-                  Servicio Evaluado
-                </button>
               </div>
               <div className="mb-3">
                 <textarea className="form-control" type="text w-100" name="comment" onChange={(event) => setModalData({ ...modalData, [event.target.comment]: event.target.value })}></textarea>
@@ -271,7 +267,7 @@ export const Perfil = () => {
               <div className="mb-3">
                 <textarea className="form-control" type="text w-100" name="comment" onChange={(event) => setModalData({ ...modalData, [event.target.comment]: event.target.value })}></textarea>
               </div>
-              <button type="button" className="btn enviar-comentario" data-bs-dismiss="modal">Calificar</button>
+              <button type="button" className="btn enviar-comentario" data-bs-dismiss="modal" onClick={() =>  {actions.handleEvaluacion(modalData, rating) }}>Calificar</button>
             </div>
             <div className="modal-footer">
               <button
@@ -546,7 +542,7 @@ export const Perfil = () => {
                                   className="btn status w-200 h-50 mx-2"
                                   data-bs-toggle="modal"
                                   data-bs-target="#exampleModal4"
-
+                                  onClick={() => { setModalData(item) }}
                                 >
                                   <FaStar />
                                 </button>

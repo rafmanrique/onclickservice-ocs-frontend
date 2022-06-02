@@ -132,6 +132,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							token: ""
 						})
 						localStorage.removeItem("token");
+						localStorage.removeItem("pedidos");
+						localStorage.removeItem("contratos");
 						
 					}
 				} catch (error) {
@@ -454,11 +456,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			handleEvaluacion: async (item) => {
+			handleEvaluacion: async (item, rating) => {
 				let store = getStore();
 				let actions = getActions();
 				console.log(item)
-				let box = {"proveedor_id":item.proveedor.id, "nombre_tipo_servicio":item.orden_detalle_servicio.nombre_tipo_servicio, "resultado_evaluacion":5}
+				let box = {"proveedor_id":item.proveedor.id, "nombre_tipo_servicio":item.orden_detalle_servicio.nombre_tipo_servicio, "resultado_evaluacion":rating}
 			
 				console.log(box)
 				const response = await fetch (`${store.URL_BASE}/evaluar/`, {
