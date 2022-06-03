@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Context } from '../../store/appContext';
-import { FaWindowClose, FaCheck, FaPencilAlt, FaStar } from 'react-icons/fa'
+import { FaWindowClose, FaCheck, FaPencilAlt, FaStar, FaHandsHelping } from 'react-icons/fa'
 import './perfil.css';
 
 export const Perfil = () => {
@@ -235,7 +235,7 @@ export const Perfil = () => {
           <div className="modal-content">
             <div className="modal-body px-5">
               <div className="text-center my-3">
-                <i className="fa-solid fa-gear fa-5x my-2"></i>
+                <i className="fa-solid fa-5x my-2"><FaHandsHelping /></i>
                 <h3>Califica al proveedor</h3>
               </div>
               <div className="pb-3 d-flex justify-content-center">
@@ -265,9 +265,10 @@ export const Perfil = () => {
                 </div>
               </div>
               <div className="mb-3">
-                <textarea className="form-control" type="text w-100" name="comment" onChange={(event) => setModalData({ ...modalData, [event.target.comment]: event.target.value })}></textarea>
+                {/* <textarea className="form-control" type="text w-100" name="comment" onChange={(event) => setModalData({ ...modalData, [event.target.comment]: event.target.value })}></textarea> */}
               </div>
-              <button type="button" className="btn enviar-comentario" data-bs-dismiss="modal" onClick={() =>  {actions.handleEvaluacion(modalData, rating) }}>Calificar</button>
+              <button type="button" className="btn enviar-comentario" data-bs-dismiss="modal" data-bs-toggle="modal"
+                                  data-bs-target="#exampleModal5" onClick={() =>  {actions.handleEvaluacion(modalData, rating) }}>Calificar</button>
             </div>
             <div className="modal-footer">
               <button
@@ -281,6 +282,44 @@ export const Perfil = () => {
           </div>
         </div>
       </div>
+
+
+  {/* modal 5 */}
+
+      <div
+                className="modal fade"
+                id="exampleModal5"
+                tabIndex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-body px-5">
+                            <div className="text-center my-3">
+                                <i className="fa-solid fa-check fa-5x my-2"></i>
+                                <h3>Calificacion realizada exitosamente</h3>
+                            </div>
+                            <div className="pb-3 d-flex justify-content-center">
+                                <Link to="/perfil">
+                                <button type="button" className="mx-2 orden-servicios" data-bs-dismiss="modal">
+                                    Ir a mi perfil
+                                </button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Cerrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
       {/* desarrollo página  */}
